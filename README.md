@@ -53,6 +53,10 @@
 - **模板系统** - 创建文章模板，快速生成标准化内容
 - **数据统计** - 查看各平台的阅读、互动数据
 - **发布历史** - 追踪所有发布记录和状态
+- **频率控制** - 智能请求频率控制，避免触发反爬虫
+- **时效提醒** - Cookie过期提醒，支持视觉和声音告警
+- **错误追踪** - 完整的错误处理与可视化分析
+- **日志系统** - 全面的操作日志、错误日志和系统日志
 
 ---
 
@@ -181,6 +185,35 @@ ad publish history
 ad publish stats <article-id>
 ```
 
+### 系统监控
+
+```bash
+# 查看系统状态
+ad monitor status
+
+# 频率控制管理
+ad monitor rate-limit -p juejin          # 查看平台频率状态
+ad monitor rate-limit -r                 # 重置频率限制
+
+# 时效性管理
+ad monitor expiration -l                 # 列出所有项目
+ad monitor expiration -e                 # 显示即将过期项目
+ad monitor expiration -a cookie:掘金账号:juejin:7  # 添加时效性项目
+
+# 错误统计
+ad monitor errors --stats                # 显示错误统计
+ad monitor errors --timeline             # 显示错误时间线
+ad monitor errors --heatmap              # 显示错误热力图
+ad monitor errors -r <error-id>          # 标记错误为已解决
+
+# 日志管理
+ad monitor logs                          # 查看最近日志
+ad monitor logs -l error                 # 只看错误日志
+ad monitor logs -n 100                   # 显示100条
+ad monitor logs -s "发布"                # 搜索日志
+ad monitor logs --set-level debug        # 设置日志级别
+```
+
 ---
 
 ## 🛠️ 开发文档
@@ -195,7 +228,13 @@ article-distributor/
 │   ├── utils/                 # 工具函数
 │   │   ├── crypto.ts          # 加密工具
 │   │   ├── config.ts          # 配置管理
-│   │   └── display.ts         # 显示工具
+│   │   ├── display.ts         # 显示工具
+│   │   ├── logger.ts          # 日志系统
+│   │   ├── rate-limiter.ts    # 频率控制
+│   │   ├── expiration-notifier.ts  # 时效性提醒
+│   │   ├── error-handler.ts   # 错误处理
+│   │   ├── error-visualizer.ts     # 错误可视化
+│   │   └── monitoring.ts      # 监控系统集成
 │   ├── core/                  # 核心模块
 │   │   ├── account.ts         # 账号管理
 │   │   └── article.ts         # 文章管理
@@ -207,7 +246,8 @@ article-distributor/
 │   └── commands/              # CLI命令
 │       ├── account.ts         # 账号命令
 │       ├── article.ts         # 文章命令
-│       └── publish.ts         # 发布命令
+│       ├── publish.ts         # 发布命令
+│       └── monitor.ts         # 监控命令
 ├── docs/                      # 文档
 │   └── PLAN.md               # 项目计划书
 ├── dist/                      # 编译输出

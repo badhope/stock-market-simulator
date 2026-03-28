@@ -7,6 +7,8 @@ import { initArticleManager } from './core/article.js';
 import { registerAccountCommands } from './commands/account.js';
 import { registerArticleCommands } from './commands/article.js';
 import { registerPublishCommands } from './commands/publish.js';
+import { registerMonitorCommands } from './commands/monitor.js';
+import { monitoringSystem } from './utils/monitoring.js';
 import { generateKey } from './utils/crypto.js';
 import fs from 'fs';
 import path from 'path';
@@ -54,6 +56,19 @@ export async function main(): Promise<void> {
   registerAccountCommands(program);
   registerArticleCommands(program);
   registerPublishCommands(program);
+  registerMonitorCommands(program);
+  
+  monitoringSystem.initialize();
+  
+  process.on('SIGINT', () => {
+    monitoringSystem.shutdown();
+    process.exit(0);
+  });
+  
+  process.on('SIGTERM', () => {
+    monitoringSystem.shutdown();
+    process.exit(0);
+  });
   
   program
     .command('init')
