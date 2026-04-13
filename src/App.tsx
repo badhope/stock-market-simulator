@@ -10,11 +10,11 @@ const { Header, Content } = Layout
 
 function App() {
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Header style={{ padding: 0, background: '#fff', borderBottom: '1px solid #f0f0f0' }}>
+    <Layout style={{ minHeight: '100vh', background: 'var(--bg-primary)' }}>
+      <Header style={{ padding: 0, background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border-color)' }}>
         <Navbar />
       </Header>
-      <Content style={{ padding: '24px' }}>
+      <Content style={{ padding: '24px', background: 'var(--bg-primary)' }}>
         <Routes>
           <Route path="/" element={<MarketPage />} />
           <Route path="/trade" element={<TradePage />} />
