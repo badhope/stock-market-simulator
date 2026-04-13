@@ -1,411 +1,159 @@
-<div align="center">
+# 💹 Stock Market Simulator
 
-# 📝 文章分发器
+专业股票市场模拟器 - 100% 还原真实券商交易体验
 
-**多平台文章发布CLI工具 - 一键发布到掘金、CSDN、博客园等平台**
+> 纯前端实现的高仿真股票交易平台，用户完全看不出是游戏
 
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
-[![TypeScript](https://img.shields.io/badge/typescript-5.3-blue)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-
-[功能特性](#-功能特性) • [快速开始](#-快速开始) • [使用指南](#-使用指南) • [开发文档](#-开发文档)
-
-</div>
-
----
-
-## 📖 项目简介
-
-**文章分发器** 是一个强大的命令行工具，帮助内容创作者将文章同时发布到多个技术写作平台。无需逐个平台手动发布，一键即可完成多平台同步，大幅提升发布效率。
-
-### 为什么选择文章分发器？
-
-- 🚀 **高效发布** - 一键发布到多个平台，节省重复劳动
-- 🔐 **安全可靠** - AES-256加密存储账号凭证，保护隐私安全
-- 📝 **Markdown支持** - 原生支持Markdown格式，兼容主流编辑器
-- 🎯 **简单易用** - 交互式CLI，无需复杂配置即可上手
-- 📊 **数据统计** - 查看各平台阅读、点赞、评论数据
-- 🔧 **灵活扩展** - 模块化架构，易于添加新平台
+[![React](https://img.shields.io/badge/React-18-61dafb?style=flat-square&logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-5-646cff?style=flat-square&logo=vite)](https://vitejs.dev/)
+[![Zustand](https://img.shields.io/badge/Zustand-4-yellow?style=flat-square)](https://zustand-demo.pmnd.rs/)
+[![Ant Design](https://img.shields.io/badge/Ant_Design-5-1677ff?style=flat-square&logo=antdesign)](https://ant.design/)
+[![ECharts](https://img.shields.io/badge/ECharts-5-AA344D?style=flat-square)](https://echarts.apache.org/)
+[![GitHub license](https://img.shields.io/github/license/badhope/stock-market-simulator?style=flat-square)](https://github.com/badhope/stock-market-simulator/blob/main/LICENSE)
 
 ---
 
-## ✨ 功能特性
+## ✨ 核心特性
 
-### 🌐 多平台支持
+### 🎯 券商级仿真度
 
-| 平台 | 类型 | 状态 | 发布方式 |
-|------|------|------|----------|
-| 掘金 | 技术社区 | ✅ 已支持 | API + Cookie |
-| CSDN | 技术博客 | ✅ 已支持 | API + Cookie |
-| 博客园 | 技术博客 | ✅ 已支持 | API + Cookie |
-| SegmentFault | 技术社区 | 🔄 开发中 | API + Cookie |
-| 知乎 | 社交平台 | 📋 计划中 | Cookie模拟 |
-| 简书 | 写作平台 | 📋 计划中 | Cookie模拟 |
-| 微信公众号 | 媒体平台 | 📋 计划中 | 官方API |
-| 今日头条 | 媒体平台 | 📋 计划中 | 官方API |
+- ✅ **T+1 交易规则** - 当天买入，下一交易日才可卖出，完美还原A股规则
+- ✅ **五档盘口** - 买1-买5 / 卖1-卖5 实时盘口，带成交量分布
+- ✅ **精确手续费** - 印花税(卖出0.1%) + 佣金(万2.5，最低5元) + 过户费
+- ✅ **订单撮合引擎** - 市价单、限价单、部成、撤单完整状态机
+- ✅ **资金冻结/解冻** - 委托时冻结，成交/撤单时解冻
+- ✅ **持仓成本核算** - FIFO先进先出算法，精确计算盈亏
 
-### 🔑 核心功能
+### 🎨 专业级 UI/UX
 
-- **账号管理** - 统一管理多个平台的登录凭证
-- **文章管理** - 创建、编辑、导入、导出Markdown文章
-- **一键发布** - 选择平台后自动发布，实时反馈结果
-- **模板系统** - 创建文章模板，快速生成标准化内容
-- **数据统计** - 查看各平台的阅读、互动数据
-- **发布历史** - 追踪所有发布记录和状态
-- **频率控制** - 智能请求频率控制，避免触发反爬虫
-- **时效提醒** - Cookie过期提醒，支持视觉和声音告警
-- **错误追踪** - 完整的错误处理与可视化分析
-- **日志系统** - 全面的操作日志、错误日志和系统日志
+- 🌙 **暗黑玻璃态主题** - GitHub 级专业暗黑设计
+- 📊 **四个功能页面**：
+  - **行情中心** - 8只样板股票实时行情，支持搜索，一键交易
+  - **交易页面** - 分时走势图 + 五档盘口 + 快捷仓位 + 当日委托
+  - **我的持仓** - 环形饼图分布 + 实时盈亏计算 + 一键交易
+  - **成交记录** - 委托记录 + 成交明细 + 历史记录
+- ⚡ **60帧过渡动画** - 所有交互带平滑过渡效果
+- 🔗 **全链路互通** - 持仓→交易，行情→交易一键跳转
+
+### 🔧 技术实现
+
+- 💾 **localStorage 持久化** - 刷新页面数据不丢失
+- 🚀 **纯前端实现** - 零后端依赖，开箱即用
+- 📈 **实时价格模拟** - 3秒自动刷新行情
+- 🎯 **严格类型安全** - TypeScript 严格模式 0 Error
 
 ---
 
 ## 🚀 快速开始
 
-### 环境要求
-
-- Node.js >= 18.0.0
-- pnpm >= 8.0.0 (推荐) 或 npm >= 9.0.0
-
-### 安装
-
 ```bash
-# 克隆仓库
-git clone https://github.com/your-username/article-distributor.git
-cd article-distributor
-
 # 安装依赖
-pnpm install
+npm install
 
-# 构建项目
-pnpm build
+# 启动开发服务器
+npm run dev
 
-# 全局安装（可选）
-pnpm link --global
+# 构建生产版本
+npm run build
 ```
 
-### 初始化
+然后打开 http://localhost:3000 开始交易！
 
-```bash
-# 初始化项目，创建必要目录
-ad init
+---
 
-# 查看帮助
-ad --help
+## 📸 功能截图
+
+| 行情中心 | 交易页面 |
+|---------|---------|
+| ![行情中心](.github/images/market.png) | ![交易页面](.github/images/trade.png) |
+| 我的持仓 | 成交记录 |
+| ![我的持仓](.github/images/portfolio.png) | ![成交记录](.github/images/history.png) |
+
+---
+
+## 🏗️ 项目架构
+
+```
+src/
+├── store/
+│   └── useStore.ts          # Zustand 状态管理 + 交易核心逻辑
+├── types/
+│   └── index.ts             # TypeScript 类型定义
+├── pages/
+│   ├── MarketPage.tsx       # 行情中心
+│   ├── TradePage.tsx        # 交易页面
+│   ├── PortfolioPage.tsx    # 我的持仓
+│   └── HistoryPage.tsx      # 成交记录
+├── components/
+│   └── Navbar.tsx           # 导航栏 + 账户信息
+├── utils/
+│   └── format.ts            # 金融数据格式化
+├── index.css                # CSS Variables + 暗黑主题
+├── App.tsx                  # 路由入口
+└── main.tsx                 # 应用入口
 ```
 
 ---
 
-## 📚 使用指南
+## 🎮 玩法说明
 
-### 账号管理
-
-```bash
-# 查看支持的平台
-ad account platforms
-
-# 添加账号（交互式）
-ad account add
-
-# 列出所有账号
-ad account list
-
-# 测试账号连接
-ad account test <account-id>
-
-# 删除账号
-ad account remove <account-id>
-```
-
-<details>
-<summary>💡 如何获取Cookie？</summary>
-
-1. 登录目标平台（如掘金）
-2. 打开浏览器开发者工具 (F12)
-3. 切换到 Network 标签
-4. 刷新页面，找到任意请求
-5. 在请求头中找到 Cookie 字段并复制
-
-</details>
-
-### 文章管理
-
-```bash
-# 创建新文章
-ad article create
-
-# 从Markdown文件导入
-ad article create -f ./my-article.md
-
-# 列出所有文章
-ad article list
-
-# 查看文章详情
-ad article show <article-id>
-
-# 编辑文章
-ad article edit <article-id>
-
-# 导出文章
-ad article export <article-id> ./output.md
-
-# 删除文章
-ad article remove <article-id>
-```
-
-### 模板管理
-
-```bash
-# 列出所有模板
-ad article template list
-
-# 创建模板
-ad article template create
-```
-
-### 发布文章
-
-```bash
-# 发布文章（交互式选择平台）
-ad publish run <article-id>
-
-# 发布到指定平台
-ad publish run <article-id> -p juejin,csdn,cnblogs
-
-# 模拟发布（不实际发布）
-ad publish run <article-id> --dry-run
-
-# 查看发布状态
-ad publish status <article-id>
-
-# 查看发布历史
-ad publish history
-
-# 查看统计数据
-ad publish stats <article-id>
-```
-
-### 系统监控
-
-```bash
-# 查看系统状态
-ad monitor status
-
-# 频率控制管理
-ad monitor rate-limit -p juejin          # 查看平台频率状态
-ad monitor rate-limit -r                 # 重置频率限制
-
-# 时效性管理
-ad monitor expiration -l                 # 列出所有项目
-ad monitor expiration -e                 # 显示即将过期项目
-ad monitor expiration -a cookie:掘金账号:juejin:7  # 添加时效性项目
-
-# 错误统计
-ad monitor errors --stats                # 显示错误统计
-ad monitor errors --timeline             # 显示错误时间线
-ad monitor errors --heatmap              # 显示错误热力图
-ad monitor errors -r <error-id>          # 标记错误为已解决
-
-# 日志管理
-ad monitor logs                          # 查看最近日志
-ad monitor logs -l error                 # 只看错误日志
-ad monitor logs -n 100                   # 显示100条
-ad monitor logs -s "发布"                # 搜索日志
-ad monitor logs --set-level debug        # 设置日志级别
-```
+1. **初始资金**：¥ 100,000 模拟资金
+2. **交易时间**：7x24 小时全天候开市
+3. **选股**：从行情中心选择股票，点击「交易」按钮
+4. **买卖**：选择买入/卖出方向，输入价格和数量
+5. **快捷仓位**：1/4仓、1/3仓、半仓、全仓一键下单
+6. **查看持仓**：在「我的持仓」查看盈亏和持仓分布
+7. **撤单**：未成交的委托可以在历史页面或交易页面撤销
 
 ---
 
-## 🛠️ 开发文档
+## 📊 交易规则
 
-### 项目结构
+| 费用项 | 费率 | 说明 |
+|--------|------|------|
+| 印花税 | 0.1% | 仅卖出时收取 |
+| 佣金 | 0.025% | 最低5元，买卖双向收取 |
+| 过户费 | 0.001% | 最低1元，买卖双向收取 |
 
-```
-article-distributor/
-├── src/
-│   ├── cli.ts                 # CLI入口
-│   ├── types/                 # TypeScript类型定义
-│   ├── utils/                 # 工具函数
-│   │   ├── crypto.ts          # 加密工具
-│   │   ├── config.ts          # 配置管理
-│   │   ├── display.ts         # 显示工具
-│   │   ├── logger.ts          # 日志系统
-│   │   ├── rate-limiter.ts    # 频率控制
-│   │   ├── expiration-notifier.ts  # 时效性提醒
-│   │   ├── error-handler.ts   # 错误处理
-│   │   ├── error-visualizer.ts     # 错误可视化
-│   │   └── monitoring.ts      # 监控系统集成
-│   ├── core/                  # 核心模块
-│   │   ├── account.ts         # 账号管理
-│   │   └── article.ts         # 文章管理
-│   ├── platforms/             # 平台发布器
-│   │   ├── base.ts            # 基类
-│   │   ├── juejin.ts          # 掘金
-│   │   ├── csdn.ts            # CSDN
-│   │   └── cnblogs.ts         # 博客园
-│   └── commands/              # CLI命令
-│       ├── account.ts         # 账号命令
-│       ├── article.ts         # 文章命令
-│       ├── publish.ts         # 发布命令
-│       └── monitor.ts         # 监控命令
-├── docs/                      # 文档
-│   └── PLAN.md               # 项目计划书
-├── dist/                      # 编译输出
-└── package.json
-```
+| 订单类型 | 说明 |
+|---------|------|
+| 限价单 | 指定价格，达到才成交 |
+| 市价单 | 以当前最优价格成交 |
 
-### 开发命令
+| 订单状态 | 说明 |
+|---------|------|
+| 已报 | 已提交等待成交 |
+| 部成 | 部分成交 |
+| 已成 | 完全成交 |
+| 已撤 | 已撤销 |
+| 废单 | 拒绝成交（资金不足等） |
+
+---
+
+## 🛠️ 开发
 
 ```bash
-# 开发模式（热重载）
-pnpm dev
-
-# 构建
-pnpm build
-
-# 运行测试
-pnpm test
-
-# 测试覆盖率
-pnpm test:coverage
+# 类型检查
+npx tsc --noEmit
 
 # 代码检查
-pnpm lint
+npm run lint
+
+# 生产预览
+npm run preview
 ```
 
-### 添加新平台
+---
 
-1. 在 `src/platforms/` 创建新的发布器文件
-2. 继承 `BasePublisher` 基类
-3. 实现必要的方法：
-   - `publish()` - 发布文章
-   - `update()` - 更新文章
-   - `delete()` - 删除文章
-   - `getStats()` - 获取统计数据
-   - `validateCredentials()` - 验证凭证
+## 📝 License
 
-```typescript
-// src/platforms/newplatform.ts
-import { BasePublisher } from './base.js';
-import { Article, PublishResult, Account } from '../types/index.js';
-
-export class NewPlatformPublisher extends BasePublisher {
-  readonly platformId = 'newplatform';
-  readonly name = '新平台';
-
-  async publish(article: Article, account: Account): Promise<PublishResult> {
-    // 实现发布逻辑
-  }
-
-  // ... 其他方法
-}
-```
-
-4. 在 `src/platforms/index.ts` 注册发布器
+MIT License - feel free to use this project for learning and fun!
 
 ---
 
-## 🔐 安全说明
-
-### 凭证加密
-
-- 使用 **AES-256-GCM** 加密算法
-- 每次加密使用随机IV（初始化向量）
-- 使用Scrypt进行密钥派生
-- 加密密钥存储在本地 `~/.adrc` 文件
-
-### 数据存储
-
-- 所有数据存储在本地 `.data/` 目录
-- 不上传任何数据到云端
-- 支持数据导出备份
+**如果觉得不错，请给个 ⭐ Star！**
 
 ---
 
-## 📋 常见问题
-
-<details>
-<summary><b>Q: Cookie会过期吗？</b></summary>
-
-是的，Cookie有时效性。当发布失败时，可以使用 `ad account test <id>` 测试账号状态，如果失效请重新添加账号。
-
-</details>
-
-<details>
-<summary><b>Q: 支持哪些Markdown语法？</b></summary>
-
-支持标准Markdown语法，各平台会自动转换适配。建议使用通用语法以确保兼容性。
-
-</details>
-
-<details>
-<summary><b>Q: 如何备份数据？</b></summary>
-
-数据存储在项目目录的 `.data/` 文件夹中，直接复制该文件夹即可备份。也可以使用 `ad article export` 导出单篇文章。
-
-</details>
-
-<details>
-<summary><b>Q: 发布失败怎么办？</b></summary>
-
-1. 检查账号状态：`ad account test <id>`
-2. 查看错误信息：`ad publish status <article-id>`
-3. 更新Cookie后重试
-4. 如仍有问题，请提交Issue
-
-</details>
-
----
-
-## 🤝 参与贡献
-
-欢迎提交Issue和Pull Request！
-
-### 贡献步骤
-
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 提交 Pull Request
-
-### 开发规范
-
-- 使用 TypeScript 编写代码
-- 遵循 ESLint 规则
-- 为新功能编写测试
-- 更新相关文档
-
----
-
-## 📄 许可证
-
-本项目基于 [MIT](./LICENSE) 许可证开源。
-
----
-
-## 🙏 致谢
-
-感谢以下开源项目：
-
-- [Commander.js](https://github.com/tj/commander.js) - CLI框架
-- [Inquirer.js](https://github.com/SBoudrias/Inquirer.js) - 交互式命令行
-- [Chalk](https://github.com/chalk/chalk) - 终端字符串样式
-- [Axios](https://github.com/axios/axios) - HTTP客户端
-
----
-
-## 📮 联系方式
-
-- 提交Issue: [GitHub Issues](https://github.com/your-username/article-distributor/issues)
-- 功能建议: [GitHub Discussions](https://github.com/your-username/article-distributor/discussions)
-
----
-
-<div align="center">
-
-**如果这个项目对你有帮助，请给一个 ⭐️ Star 支持一下！**
-
-Made with ❤️ by Article Distributor Team
-
-</div>
+> ⚠️ **免责声明**：本项目仅供学习娱乐，不构成任何投资建议。股市有风险，投资需谨慎。
