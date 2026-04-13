@@ -4,6 +4,8 @@
 
 > 纯前端实现的高仿真股票交易平台，用户完全看不出是游戏
 
+[![在线演示](https://img.shields.io/badge/🚀_在线演示-GitHub_Pages-brightgreen?style=for-the-badge)](https://badhope.github.io/stock-market-simulator/)
+
 [![React](https://img.shields.io/badge/React-18-61dafb?style=flat-square&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-5-646cff?style=flat-square&logo=vite)](https://vitejs.dev/)
