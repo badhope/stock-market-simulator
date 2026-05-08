@@ -1,110 +1,46 @@
-export interface Stock {
-  code: string
-  name: string
-  price: number
-  change: number
-  changePercent: number
-  open: number
-  high: number
-  low: number
-  volume: number
-  amount: number
-  isUp: boolean
-  ask1: number
-  ask1Vol: number
-  ask2: number
-  ask2Vol: number
-  ask3: number
-  ask3Vol: number
-  ask4: number
-  ask4Vol: number
-  ask5: number
-  ask5Vol: number
-  bid1: number
-  bid1Vol: number
-  bid2: number
-  bid2Vol: number
-  bid3: number
-  bid3Vol: number
-  bid4: number
-  bid4Vol: number
-  bid5: number
-  bid5Vol: number
-  priceHistory: number[]
+export interface Province {
+  id: string;
+  name: string;
+  region: 'east' | 'central' | 'west' | 'northeast';
+  candidates: number;
+  undergraduateRate: number;
+  keyUniversityRate: number;
+  top985Rate: number;
+  top211Rate: number;
+  difficultyLevel: 1 | 2 | 3 | 4;
+  localUniversities: { '985': number; '211': number; 'doubleFirst': number };
+  undergraduateLine: number;
+  sources: { enrollmentRate: string; candidates: string; scoreLine: string };
+  educationInvestment: { perStudentFunding: number; educationGDPPercent: number; ruralFundingRatio: number };
+  socialMobility: { ruralStudentRatio: number; familyEducationSpending: number; parentalEducationImpact: number };
+  policyFactors: { localEnrollmentRatio: number; ruralSpecialPlan: number; retakeStudentRatio: number };
+  urbanRuralGap: { urbanStudentRate: number; capitalStudentRate: number; nonCapitalRate: number };
+  hiddenFactors: { hmtEnrollment: number; foreignEnrollment: number; overseaStudyRate: number; internationalSchoolStudents: number; studentQualityIndex: number; tutoringCostPerStudent: number; eliteSchoolConcentration: number };
 }
 
-export interface PositionLot {
-  id: string
-  quantity: number
-  price: number
-  date: number
-  available: boolean
+export interface FilterState {
+  selectedProvinces: string[];
+  sortBy: 'candidates' | 'undergraduateRate' | 'difficulty';
+  sortOrder: 'asc' | 'desc';
+  regionFilter: string[];
+  difficultyFilter: number[];
+  difficultyLevel?: number;
+  region?: string;
+  minUndergraduateRate?: number;
 }
 
-export interface Position {
-  code: string
-  name: string
-  totalQuantity: number
-  availableQuantity: number
-  frozenQuantity: number
-  costAmount: number
-  currentPrice: number
-  lots: PositionLot[]
+export interface MiningInsight {
+  category: string;
+  title: string;
+  description: string;
+  data: { label: string; value: number; unit: string }[];
+  conclusion: string;
 }
 
-export interface Order {
-  id: string
-  code: string
-  name: string
-  type: 'buy' | 'sell'
-  orderType: 'market' | 'limit'
-  price: number
-  quantity: number
-  filledQuantity: number
-  status: 'pending' | 'partial' | 'filled' | 'cancelled' | 'rejected'
-  time: number
-  message?: string
-  fee?: FeeDetail
-}
-
-export interface FeeDetail {
-  stampDuty: number
-  commission: number
-  transferFee: number
-  total: number
-}
-
-export interface Trade {
-  id: string
-  orderId: string
-  code: string
-  name: string
-  type: 'buy' | 'sell'
-  price: number
-  quantity: number
-  amount: number
-  fee: FeeDetail
-  time: number
-  settled: boolean
-}
-
-export interface Account {
-  initialBalance: number
-  totalAssets: number
-  marketValue: number
-  availableBalance: number
-  withdrawableBalance: number
-  frozenBalance: number
-  totalProfitLoss: number
-  todayProfitLoss: number
-  profitLossPercent: number
-}
-
-export interface FundRecord {
-  id: string
-  type: 'in' | 'out' | 'trade' | 'fee' | 'settlement'
-  amount: number
-  balance: number
-  time: number
-  remark: string
+export interface EducationFunnel {
+  stage: string;
+  total: number;
+  passed: number;
+  rate: number;
+  filter: string;
 }
