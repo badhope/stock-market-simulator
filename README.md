@@ -1,161 +1,75 @@
-# 💹 Stock Market Simulator
+# 中国高考公平性数据分析平台
 
-专业股票市场模拟器 - 100% 还原真实券商交易体验
+基于真实可追溯数据的多维度数据挖掘与可视化分析平台。
 
-> 纯前端实现的高仿真股票交易平台，用户完全看不出是游戏
+## 核心功能
 
-[![在线演示](https://img.shields.io/badge/🚀_在线演示-GitHub_Pages-brightgreen?style=for-the-badge)](https://badhope.github.io/stock-market-simulator/)
+- **15个省份高考数据** - 北京、上海、河南、广东等主要省份完整录取数据分析
+- **9维度数据挖掘** - 经济投入、社会流动性、政策因素、城乡差距等深度分析
+- **教育公平性指数** - 量化评估各省录取公平程度
+- **教育漏斗模型** - 从小学到顶尖名校的逐级筛选机制可视化
+- **社会再生产分析** - 揭示阶层固化的数学规律
+- **交互式图表** - ECharts 支持的数据可视化，支持动态筛选
 
-[![React](https://img.shields.io/badge/React-18-61dafb?style=flat-square&logo=react)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-5-646cff?style=flat-square&logo=vite)](https://vitejs.dev/)
-[![Zustand](https://img.shields.io/badge/Zustand-4-yellow?style=flat-square)](https://zustand-demo.pmnd.rs/)
-[![Ant Design](https://img.shields.io/badge/Ant_Design-5-1677ff?style=flat-square&logo=antdesign)](https://ant.design/)
-[![ECharts](https://img.shields.io/badge/ECharts-5-AA344D?style=flat-square)](https://echarts.apache.org/)
-[![GitHub license](https://img.shields.io/github/license/badhope/stock-market-simulator?style=flat-square)](https://github.com/badhope/stock-market-simulator/blob/main/LICENSE)
+## 技术栈
 
----
+- React 18 + TypeScript
+- Vite
+- Ant Design
+- ECharts
+- Zustand
 
-## ✨ 核心特性
+## 数据来源
 
-### 🎯 券商级仿真度
+- 国家统计局《教育事业发展统计公报》
+- 教育部高校招生计划
+- 各省教育考试院公开数据
 
-- ✅ **T+1 交易规则** - 当天买入，下一交易日才可卖出，完美还原A股规则
-- ✅ **五档盘口** - 买1-买5 / 卖1-卖5 实时盘口，带成交量分布
-- ✅ **精确手续费** - 印花税(卖出0.1%) + 佣金(万2.5，最低5元) + 过户费
-- ✅ **订单撮合引擎** - 市价单、限价单、部成、撤单完整状态机
-- ✅ **资金冻结/解冻** - 委托时冻结，成交/撤单时解冻
-- ✅ **持仓成本核算** - FIFO先进先出算法，精确计算盈亏
+## 核心发现
 
-### 🎨 专业级 UI/UX
+1. **城乡差距** - 城市学生985录取率(65%)是农村(12%)的5.4倍
+2. **区域差距** - 北京211高校(26所)是河南(1所)的26倍
+3. **本科录取率差距** - 北京(85.71%) vs 河南(26.2%)
+4. **复读生竞争** - 河南复读生比例高达28%
+5. **核心规律** - 教育系统是社会分层的机器，而非社会流动的阶梯
 
-- 🌙 **暗黑玻璃态主题** - GitHub 级专业暗黑设计
-- 📊 **四个功能页面**：
-  - **行情中心** - 8只样板股票实时行情，支持搜索，一键交易
-  - **交易页面** - 分时走势图 + 五档盘口 + 快捷仓位 + 当日委托
-  - **我的持仓** - 环形饼图分布 + 实时盈亏计算 + 一键交易
-  - **成交记录** - 委托记录 + 成交明细 + 历史记录
-- ⚡ **60帧过渡动画** - 所有交互带平滑过渡效果
-- 🔗 **全链路互通** - 持仓→交易，行情→交易一键跳转
-
-### 🔧 技术实现
-
-- 💾 **localStorage 持久化** - 刷新页面数据不丢失
-- 🚀 **纯前端实现** - 零后端依赖，开箱即用
-- 📈 **实时价格模拟** - 3秒自动刷新行情
-- 🎯 **严格类型安全** - TypeScript 严格模式 0 Error
-
----
-
-## 🚀 快速开始
+## 开始使用
 
 ```bash
 # 安装依赖
 npm install
 
-# 启动开发服务器
+# 开发模式
 npm run dev
 
 # 构建生产版本
 npm run build
-```
 
-然后打开 http://localhost:3000 开始交易！
-
----
-
-## 📸 功能截图
-
-| 行情中心 | 交易页面 |
-|---------|---------|
-| ![行情中心](.github/images/market.png) | ![交易页面](.github/images/trade.png) |
-| 我的持仓 | 成交记录 |
-| ![我的持仓](.github/images/portfolio.png) | ![成交记录](.github/images/history.png) |
-
----
-
-## 🏗️ 项目架构
-
-```
-src/
-├── store/
-│   └── useStore.ts          # Zustand 状态管理 + 交易核心逻辑
-├── types/
-│   └── index.ts             # TypeScript 类型定义
-├── pages/
-│   ├── MarketPage.tsx       # 行情中心
-│   ├── TradePage.tsx        # 交易页面
-│   ├── PortfolioPage.tsx    # 我的持仓
-│   └── HistoryPage.tsx      # 成交记录
-├── components/
-│   └── Navbar.tsx           # 导航栏 + 账户信息
-├── utils/
-│   └── format.ts            # 金融数据格式化
-├── index.css                # CSS Variables + 暗黑主题
-├── App.tsx                  # 路由入口
-└── main.tsx                 # 应用入口
-```
-
----
-
-## 🎮 玩法说明
-
-1. **初始资金**：¥ 100,000 模拟资金
-2. **交易时间**：7x24 小时全天候开市
-3. **选股**：从行情中心选择股票，点击「交易」按钮
-4. **买卖**：选择买入/卖出方向，输入价格和数量
-5. **快捷仓位**：1/4仓、1/3仓、半仓、全仓一键下单
-6. **查看持仓**：在「我的持仓」查看盈亏和持仓分布
-7. **撤单**：未成交的委托可以在历史页面或交易页面撤销
-
----
-
-## 📊 交易规则
-
-| 费用项 | 费率 | 说明 |
-|--------|------|------|
-| 印花税 | 0.1% | 仅卖出时收取 |
-| 佣金 | 0.025% | 最低5元，买卖双向收取 |
-| 过户费 | 0.001% | 最低1元，买卖双向收取 |
-
-| 订单类型 | 说明 |
-|---------|------|
-| 限价单 | 指定价格，达到才成交 |
-| 市价单 | 以当前最优价格成交 |
-
-| 订单状态 | 说明 |
-|---------|------|
-| 已报 | 已提交等待成交 |
-| 部成 | 部分成交 |
-| 已成 | 完全成交 |
-| 已撤 | 已撤销 |
-| 废单 | 拒绝成交（资金不足等） |
-
----
-
-## 🛠️ 开发
-
-```bash
-# 类型检查
-npx tsc --noEmit
-
-# 代码检查
-npm run lint
-
-# 生产预览
+# 预览构建结果
 npm run preview
 ```
 
----
+## 项目结构
 
-## 📝 License
+```
+src/
+├── components/       # React 组件
+│   ├── Navbar.tsx           # 导航栏
+│   ├── DataMiningAnalysis.tsx # 数据挖掘分析页
+│   ├── AnalysisReport.tsx    # 分析报告页
+│   ├── ExportImport.tsx      # 数据导入导出
+│   └── ThemeToggle.tsx       # 主题切换
+├── data/
+│   └── gaokaoData.ts        # 高考数据与算法
+├── store/
+│   └── useStore.ts          # Zustand 状态管理
+├── types/
+│   └── index.ts             # TypeScript 类型定义
+├── App.tsx                  # 应用入口
+├── main.tsx                 # React 入口
+└── index.css                # 全局样式
+```
 
-MIT License - feel free to use this project for learning and fun!
+## License
 
----
-
-**如果觉得不错，请给个 ⭐ Star！**
-
----
-
-> ⚠️ **免责声明**：本项目仅供学习娱乐，不构成任何投资建议。股市有风险，投资需谨慎。
+MIT
